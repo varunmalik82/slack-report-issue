@@ -1,0 +1,42 @@
+{
+  "reports": [
+    {
+      "targets": [
+        {
+          "name": "slack",
+          "inputs": {
+            "url": "{SLACK_WEBHOOK}",
+            "publish": "test-summary-slim",
+            "title": "{TITLE}"
+          },
+          "extensions": [
+            {
+              "name": "hyperlinks",
+              "inputs": {
+                "links": [
+                  {
+                    "text": "Build",
+                    "url": "{BUILD_URL}"
+                  },
+                  {
+                    "text": "Test Report",
+                    "url": "{TEST_REPORT_LINK}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "quick-chart-test-summary"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "type": "junit",
+          "files": ["{JUNIT_FILE_PATH}"]
+        }
+      ]
+    }
+  ]
+}
